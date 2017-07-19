@@ -1,7 +1,9 @@
 import React from 'react'
 import {
   Editor,
-  EditorState
+  EditorState,
+  RichUtils,
+  ContentState
 } from 'draft-js'
 
 /**
@@ -10,13 +12,24 @@ import {
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { editorState: EditorState.createEmpty() }
+
+    this.state = {
+      editorState: EditorState.createWithContent(ContentState.createFromText(this.props.code))
+    }
     this.onChange = (editorState) => this.setState({ editorState })
+    this._onBoldClick = this._onBoldClick.bind(this)
+  }
+
+  _onBoldClick() {
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'))
   }
 
   render() {
     return (
-      <Editor editorState={this.state.editorState} onChange={this.onChange} />
+      <div className="code-editor">
+        <button onClick={this._onBoldClick.bind(this)}>Bold</button>
+        <Editor editorState={this.state.editorState} onChange={this.onChange} />
+      </div>
     )
   }
 }
