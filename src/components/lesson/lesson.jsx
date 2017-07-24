@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Markdown from 'react-markdown'
 
 import { CodeEditor } from '../../components/'
 
@@ -21,7 +22,7 @@ const Lesson = ({ data }) => {
       </h2>
 
       <div className="Lesson__theory">
-        {theory}
+        <Markdown source={theory} />
       </div>
 
       <div className="Lesson__practice">

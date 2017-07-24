@@ -7,12 +7,14 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-markdown": "^2.5.0",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.10"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-data": "node ./src/data/build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
