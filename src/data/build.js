@@ -15,5 +15,7 @@ const lessonsData = lessonsList.map(lessonId => {
   )
 })
 
-fs.writeFileSync('./index.json', JSON.stringify(lessonsData))
+fs.writeFileSync('./index.json', JSON.stringify({
+  lessons: lessonsData
+}))
 
