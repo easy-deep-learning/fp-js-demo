@@ -9,7 +9,7 @@ const code = {}
 const Lesson = ({ data }) => {
   const {
     title,
-    theory,
+    theory = '',
     practice,
     links,
     id
@@ -22,7 +22,7 @@ const Lesson = ({ data }) => {
       </h2>
 
       <div className="Lesson__theory">
-        <Markdown source={theory} />
+        <Markdown source={theory} className="markdown-body" />
       </div>
 
       <div className="Lesson__practice">
