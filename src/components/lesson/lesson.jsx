@@ -4,16 +4,15 @@ import Markdown from 'react-markdown'
 
 import { CodeEditor } from '../../components/'
 
-const code = {}
-
 const Lesson = ({ data }) => {
   const {
     title,
     theory = '',
-    practice,
-    links,
-    id
+    id,
+    examples
   } = data
+
+  if (!data.title) return null
 
   return (
     <div className="Lesson">
@@ -29,7 +28,15 @@ const Lesson = ({ data }) => {
         Практика
         practice
         <div className="Lesson__code">
-          {/*<CodeEditor code={getFunctionBody(code)} />*/}
+          {Object.keys(examples).map(exampleID => {
+
+            return (
+              <div className="Example" key={exampleID}>
+                <h3 className="Example__header">Пример {exampleID}</h3>
+                <div className="Example__code"><CodeEditor code={examples[exampleID].code} /></div>
+              </div>
+            )
+          })}
         </div>
       </div>
 
